@@ -1,11 +1,14 @@
 // Copyright (c) 2017, RetailNext, Inc.
 
+// Package unixtime provides functions that make it easier to convert between go time.Time objects and Unix timestamps.
 package unixtime
 
 import "time"
 
 // ToUnix converts a time object to number of
-// {nano,mirco,milli,}seconds since 1 January 1970 utc.
+// {Nano,Mirco,Milli,}seconds since 1 January 1970 utc.
+// ToUnix panics if your unix is something other than
+// 1 {Nano,Micro,Milli}second.
 func ToUnix(t time.Time, unit time.Duration) int64 {
 	var secMult int64
 	var nanoDiv int64
@@ -37,6 +40,8 @@ func ToUnix(t time.Time, unit time.Duration) int64 {
 // of unit {nano,mirco,milli,}seconds since 1 January 1970 utc.
 // to a time. This function has the same imput limitations as
 // time.Unix.
+// ToTime panics if your unix is something other than
+// 1 {Nano,Micro,Milli}second.
 func ToTime(unixTime int64, unit time.Duration) time.Time {
 	var sec int64
 	var nsec int64
