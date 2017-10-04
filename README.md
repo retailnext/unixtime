@@ -10,10 +10,14 @@ http://godoc.org/github.com/retailnext/unixtime
 
     t0 := time.Now()
     unixMicroseconds := unixtime.ToUnix(t0, time.Microsecond)
+
     fmt.Printf("Microseconds: %d\n", unixMicroseconds)
+    // prints Microseconds: 1507158285672039
 
     t1 := unixtime.ToTime(unixMicroseconds, time.Microsecond)
+
     fmt.Printf("t0=%q t1=%q\n", t0.Format(time.RFC3339Nano), t1.Format(time.RFC3339Nano))
+    // prints t0="2017-10-04T23:04:45.672039138Z" t1="2017-10-04T23:04:45.672039Z"
 
 
 ### Installation
